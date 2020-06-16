@@ -1,42 +1,110 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>One hack site </title>
-
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+​
+* {
+  box-sizing: border-box;
+}
+​
+/* Style inputs */
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+​
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  cursor: pointer;
+}
+​
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+​
+/* Style the container/contact section */
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 10px;
+}
+​
+/* Create two columns that float next to eachother */
+.column {
+  float: left;
+  width: 50%;
+  margin-top: 6px;
+  padding: 20px;
+}
+​
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+​
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+</style>
 </head>
 <body>
-    <form class="form-horizontal">
-            <br/> <br/>
-        
-        <div class="form-group">
-               <h4 align="right"> Welcome Alice!</h4>
-                <br/> <br/>
-          <label class="control-label col-sm-2" for="namel">Name:</label>
-          <div class="col-sm-4">
-            <input type="name" class="form-control" id="name">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="control-label col-sm-2" for="phone">Phone:</label>
-          <div class="col-sm-4">
-            <input type="phone" class="form-control" id="phone" >
-          </div>
-        </div>
-
-        <div class="form-group">
-          <div class="col-sm-offset-2 col-sm-4">
-            <button type="submit" class="btn btn-default">Send SMS</button>
-          </div>
-        </div>
+​
+<h2>Donor Search</h2>
+        <input type="text" id="searchname" name="wildcardname" placeholder="Enter name to search..">
+<div class="container">
+  <div style="text-align:center">
+    <h2>Prospective Donor</h2>
+    <p>Details of donors who are glad to help:</p>
+  </div>
+  <div class="row">
+    <div class="column">
+      <img src="https://www.ivyboarding.com/w3template/w3images/coding2.jpg" style="width:100%">
+    </div>
+    <div class="column">
+      <form action="/action_page.php">
+        <label for="fname">First Name</label>
+        <input type="text" id="fname" name="firstname" placeholder="Your name..">
+        <label for="lname">Last Name</label>
+        <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+        <label for="pcity">City</label>
+        <input type="text" id="pcity" name="cityname" placeholder="Your city..">  </br>  </br>     
+        <label for="country">Country</label>
+        <select id="country" name="country">
+          <option value="usa">USA</option>
+          <option value="uk">United Kingdom</option>
+          <option value="australia">Australia</option>
+          <option value="canada">Canada</option>
+        </select>
+        <label for="pcity">Phone Number</label>
+        <input type="text" id="pphone" name="phonenumber" placeholder="Your phone number..">        
+        <label for="pcity">Email</label>
+        <input type="text" id="pemail" name="emailaddress" placeholder="Your email..">        
+        <label for="pcity">Blood Group</label>
+        <input type="text" id="pbgroup" name="bloodgroup" placeholder="Your blood group..">  </br>  </br>      
+        <label for="subject">Subject</label>
+        <textarea id="subject" name="subject" placeholder="Write something.." style="height:170px"></textarea>
+        <input type="submit" value="Send SMS">
       </form>
-    
+    </div>
+  </div>
+</div>
+​
 </body>
 </html>
