@@ -6,7 +6,7 @@
     <title>One hack site </title>
 </head>
 <body>
-    <form id="login">
+    <form id="login" >
         <input type="text" id="username" name="username" value="" class="textbox">
         <button type="submit">login</button>
 
@@ -100,10 +100,23 @@
                 sendButton.addEventListener("click", async()=>{
                     console.log("test")
 
-                    //get list of all users other than me and loop through them and send each an sms message
-                    messageTextarea.value
+                    //get list of all users other than me and loop through them 
+                    //and send each an sms message
+                   
                     profiles.items.forEach(profile =>{
-                        
+                        const data = {
+                            phone: profile.phone,
+                            text: messageTextArea.value
+                        }
+                        console.log(profile);
+                       /* await fetch('/sms', {
+                            method: 'POST',
+                            headers: {
+                            'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(data )
+                        });*/
+
                     });
 
                 await conversation.sendText(messageTextarea.value);

@@ -32,7 +32,7 @@ app
   //outbound sms
 
   function handleOutboundSms(request, response) {
-     nexmo.message.sendSms(447451288842, request.body.number, text, (err, responseData) => {
+     nexmo.message.sendSms(447451288842, request.body.phone, request.body.text, (err, responseData) => {
          if (err) {
              console.log(err);
          } else {
