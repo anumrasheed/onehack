@@ -1,25 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>One hack site </title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+
+​
+* {
+  box-sizing: border-box;
+}
+​
+/* Style inputs */
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+​
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  cursor: pointer;
+}
+​
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+​
+/* Style the container/contact section */
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 10px;
+}
+​
+/* Create two columns that float next to eachother */
+.column {
+  float: left;
+  width: 50%;
+  margin-top: 6px;
+  padding: 20px;
+}
+​
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+​
+
+</style>
 </head>
 <body>
+​<h2>Coronoa Survivor reach</h2>
+<div class="container">
+  <div style="text-align:center">
+    <h2>Chat with Prospective Donor</h2>
+  </div>
+  <div class="row">
+    <div class="column">
+    <img src="https://login.auth.vonage.com/img/img-clouds-top-big.a193b3ee.svg" style="width: 10%;
+      position: absolute;
+      top: 60px;
+      right: 60px;">
+    </div>
+    <div class="column">
+      <form action="/action_page.php">
+​
     <form id="login" >
         <input type="text" id="username" name="username" value="" class="textbox">
         <button type="submit">login</button>
-
     </form>
-    <br/> <br/>
-    <section id="chat">
+​
 
-        <div id="Messagefeed"></div>
-        <div>
-        <textarea id="messagetextarea"></textarea>
-        <button id="send">send</button>
-        </div>
-    </section>
+    <br/> <br/>
+​
+​
+        <label for="Chat">Chat Message</label>
+        <textarea id="Messagefeed" name="Message" placeholder="Chat away.." style="height:100px"></textarea>
+        <input type="submit" value="Send">
+      </form>
+    </div>
+  </div>
+
 
     <!-- pull in nexmo client SDK so that our chatapp can communicate with Nexmo client backend -->
 
@@ -98,27 +170,27 @@
                 });
                 //listen for clicks on send button and listen for existing text value
                 sendButton.addEventListener("click", async()=>{
-                    console.log("test")
 
-                    //get list of all users other than me and loop through them 
+                    //get list of all users other than initiator 
                     //and send each an sms message
                    
                     profiles.forEach(async (profile) => {
-                        const data = {
-                            phone: profile.phone,
-                            text: messageTextarea.value
-                        }
-                        console.log(profile);
+                        if(profile.name != username.value){
+                            const data = {
+                                phone: profile.phone,
+                                text: messageTextarea.value
+                            }
 
-                    await fetch('http://localhost:3000/sms', {
-                            method: 'POST',
-                            mode: 'cors',
-                            credentials: 'same-origin',
-                            headers: {
-                            'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify(data )
-                        });
+                        await fetch('http://localhost:3000/sms', {
+                                method: 'POST',
+                                mode: 'cors',
+                                credentials: 'same-origin',
+                                headers: {
+                                'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify(data )
+                            });
+                        }
                     });
 
                 await conversation.sendText(messageTextarea.value);
