@@ -25,6 +25,28 @@ app
   .get(handleInboundSms)
   .post(handleInboundSms)
 
+  app
+  .route('/sms')
+  .post(handleOutboundSms)
+
+  //outbound sms
+
+  function handleOutboundSms(request, response) {
+     nexmo.message.sendSms(447451288842, request.body.number, text, (err, responseData) => {
+         if (err) {
+             console.log(err);
+         } else {
+             if(responseData.messages[0]['status'] === "0") {
+                 console.log("Message sent successfully.");
+             } else {
+                 console.log(`Message failed with error: ${responseData.messages[0]['error-text']}`);
+             }
+         }
+       
+     })
+     response.send('OK');
+   }
+
   function handleInboundSms(request, response) {
    /* const params = Object.assign(request.query, request.body)
     console.log(params)

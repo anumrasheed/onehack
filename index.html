@@ -29,15 +29,20 @@
         const profiles = [
             {
                 name: "Alice",
-                JWT: "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTIyMjQ5MjQsImp0aSI6IjlkODI5NzIwLWFmMDUtMTFlYS1iN2UxLTZiNzdlNDAxNmFjNyIsImFjbCI6eyJwYXRocyI6eyIvKi91c2Vycy8qKiI6e30sIi8qL2NvbnZlcnNhdGlvbnMvKioiOnt9LCIvKi9zZXNzaW9ucy8qKiI6e30sIi8qL2RldmljZXMvKioiOnt9LCIvKi9pbWFnZS8qKiI6e30sIi8qL21lZGlhLyoqIjp7fSwiLyovYXBwbGljYXRpb25zLyoqIjp7fSwiLyovcHVzaC8qKiI6e30sIi8qL2tub2NraW5nLyoqIjp7fX19LCJzdWIiOiJBbGljZSIsImFwcGxpY2F0aW9uX2lkIjoiZWNjOGRhNjAtMmIyZS00NzNiLWJiODEtYzc4OWQ2ZTZkOGJhIiwiZXhwIjoxNTkyMzExMzIzfQ.UaR4goH9kDAkTmRgQV-aCWvadaBJLzAsUY3mKSrVp9w3hVBTSeJelpW06GAKZWtlwFjKpJTip6s8zps0GIS_FbRfOQuOXWmzpX0HAd4BxV0tvpVIZg_MHgWK8m7zBc8VJPChSoy9eg3kdYiToLbhHNhsMUDKvu_Nkh1C8HFr32J6nP0IUq20iVlz0XU6Px79lOyNIfWIVaupweRTuWcO6Gx5NUqKUCXD1-FqMc5nPrRQ1dsMSBifaVBFPnF0HCkEWuwdMC2CXEsnCjTjAOIpYwOm4MHSAh3ZQPGKFh1hQA7rnRZ82-Qhv3EIV06hm6daNO4zGr87D8P6-KHpp9W2Ow",
+                JWT: "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTIzMTU3ODYsImp0aSI6IjJiYjRiYTkwLWFmZDktMTFlYS04MjQ4LWEzOTAxZDU3N2YyNSIsImFjbCI6eyJwYXRocyI6eyIvKi91c2Vycy8qKiI6e30sIi8qL2NvbnZlcnNhdGlvbnMvKioiOnt9LCIvKi9zZXNzaW9ucy8qKiI6e30sIi8qL2RldmljZXMvKioiOnt9LCIvKi9pbWFnZS8qKiI6e30sIi8qL21lZGlhLyoqIjp7fSwiLyovYXBwbGljYXRpb25zLyoqIjp7fSwiLyovcHVzaC8qKiI6e30sIi8qL2tub2NraW5nLyoqIjp7fX19LCJzdWIiOiJBbGljZSIsImFwcGxpY2F0aW9uX2lkIjoiZWNjOGRhNjAtMmIyZS00NzNiLWJiODEtYzc4OWQ2ZTZkOGJhIiwiZXhwIjoxNTkyNDAyMTg1fQ.S_5gc4DH_TkFBZFIcPJnsToy_3k_6_e7dkPoHHjMmJ996FTtsiWd0iVhxTW23-ms1RDdxXf1KfjvyYaUUpEjF9c4I-DHIGQULcujJPY5UfqRxN-Gu4aEUmGpNp0FTKAcIv5w0stKG5fi8iD-alXdsiJuvP39o9V3CChpzI7LUmD1MqbCPIJRVPR39TH8k7szN3BHgyIGUW-9dQ-scAihdUN1IMxqeCcA8sIBT8KfGGVPaIyiA4fA8Kxb1NiB13TwpX2aqqz5KQg3AYfYLzPORhlzw6JOITxv9gEyCn2STiC5Ew4OVjLrNlI9OXjTM8553aHTvP6UkFAeLVVRZ6mCSg",
                 blood: "A+",
-                city: "London"
+                city: "London",
+                country: "UK",
+                phone: "1234567890"
+
             },
             {
                 name: "Bob",
-                JWT: "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTIyMjUwNjYsImp0aSI6ImYyNDc1NWMwLWFmMDUtMTFlYS1hYmI4LTgzZjA5Zjc0NjQyMCIsImFjbCI6eyJwYXRocyI6eyIvKi91c2Vycy8qKiI6e30sIi8qL2NvbnZlcnNhdGlvbnMvKioiOnt9LCIvKi9zZXNzaW9ucy8qKiI6e30sIi8qL2RldmljZXMvKioiOnt9LCIvKi9pbWFnZS8qKiI6e30sIi8qL21lZGlhLyoqIjp7fSwiLyovYXBwbGljYXRpb25zLyoqIjp7fSwiLyovcHVzaC8qKiI6e30sIi8qL2tub2NraW5nLyoqIjp7fX19LCJzdWIiOiJCb2IiLCJhcHBsaWNhdGlvbl9pZCI6ImVjYzhkYTYwLTJiMmUtNDczYi1iYjgxLWM3ODlkNmU2ZDhiYSIsImV4cCI6MTU5MjMxMTQ2NX0.h-6zA3LHfdeCXQmZ9OJARIv4ZQAU8RIJ15QCVdS_2sKQqzqOBp0MGY93x5ytjb2mN4kiiTDPeJo96Jm9z9ATk7cS5Y99THjXaK1y3Suu_glm3p1WxdiPcoN_apcnqmCPssu4djxJi5OCgfSIkuP7e36WNwcU0VAQ6abGN-RZE5IdsRWZvpsIAsiEDnUhUhtzb3r82yl4SudRNmB8xSz-K2dxS4PJLaDG2B1sk7YP4gN0z7y8d4MVQnUcelwIiXo9H75e9i-Vtit2bBrHMmQvUmOPuLOoeCfD8G3uip-672Amt1yeyMgtP-1M2RGA239OkOGHWFxBUscIAW2wT2YklQ",
+                JWT: "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTIzMTU4MzcsImp0aSI6IjRhM2QzMjMwLWFmZDktMTFlYS1hNmU4LTQ3YjRkNzk5ZDQ5OCIsImFjbCI6eyJwYXRocyI6eyIvKi91c2Vycy8qKiI6e30sIi8qL2NvbnZlcnNhdGlvbnMvKioiOnt9LCIvKi9zZXNzaW9ucy8qKiI6e30sIi8qL2RldmljZXMvKioiOnt9LCIvKi9pbWFnZS8qKiI6e30sIi8qL21lZGlhLyoqIjp7fSwiLyovYXBwbGljYXRpb25zLyoqIjp7fSwiLyovcHVzaC8qKiI6e30sIi8qL2tub2NraW5nLyoqIjp7fX19LCJzdWIiOiJCb2IiLCJhcHBsaWNhdGlvbl9pZCI6ImVjYzhkYTYwLTJiMmUtNDczYi1iYjgxLWM3ODlkNmU2ZDhiYSIsImV4cCI6MTU5MjQwMjIzNn0.BSjvnKO75mU6jGExu7LJjzh5hPI3eSB-VGOZGKEuSrLhR2hQt6ysfCkHMuws83HQUHosmDkzQua7XSXMtHVy5WasIxhVzUebIIxLoeH5vEDtLm9jXnYVvoW6o86j5W66QhqKDQBM6uDlgmgge9JfH2d3LIkqOEmOE9ODAqcP4o05XwniP9xvGNO8SmIZz4DNbe4JKX2fnQX9Fo0bmrk_YbJC6JMBEdSWcD_0l7RgprDazH5nnj_ExvredrdWpKhyMllQfzDX7ktNMYXmeFPIpevT_BCPb-sxRIbmKEMgF5FRDF4H7lTfAt5h0QmFIYq_JMw1kfWhC-Wywl1UGB03Pg",
                 blood: "B",
-                city: "London"
+                city: "London",
+                country: "UK",
+                phone: "1224567890"
             }
 
         ]
@@ -94,6 +99,12 @@
                 //listen for clicks on send button and listen for existing text value
                 sendButton.addEventListener("click", async()=>{
                     console.log("test")
+
+                    //get list of all users other than me and loop through them and send each an sms message
+                    messageTextarea.value
+                    profiles.items.forEach(profile =>{
+                        
+                    });
 
                 await conversation.sendText(messageTextarea.value);
                 messageTextarea.value = "";
