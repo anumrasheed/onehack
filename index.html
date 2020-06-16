@@ -5,10 +5,9 @@
 <style>
 body {
   font-family: Arial, Helvetica, sans-serif;
-
+  background-color:#871fff;
 }
 
-​
 * {
   box-sizing: border-box;
 }
@@ -61,7 +60,7 @@ input[type=submit]:hover {
 </style>
 </head>
 <body>
-​<h2>Coronoa Survivor reach</h2>
+​<h2>Corona Survivor Reach</h2>
 <div class="container">
   <div style="text-align:center">
     <h2>Chat with Prospective Donor</h2>
@@ -74,23 +73,24 @@ input[type=submit]:hover {
       right: 60px;">
     </div>
     <div class="column">
-      <form action="/action_page.php">
-​
+
     <form id="login" >
         <input type="text" id="username" name="username" value="" class="textbox">
         <button type="submit">login</button>
     </form>
-​
-
-    <br/> <br/>
-​
-​
-        <label for="Chat">Chat Message</label>
-        <textarea id="Messagefeed" name="Message" placeholder="Chat away.." style="height:100px"></textarea>
-        <input type="submit" value="Send">
-      </form>
+​    <br/> <br/>
+​    <section id="chat">
+        <div id="Messagefeed"></div>
+        <div>
+        <textarea id="messagetextarea" style="height:100px"></textarea>
+        <button id="send">Send</button>
+        </div>
+    </section>
+    
     </div>
   </div>
+
+ 
 
 
     <!-- pull in nexmo client SDK so that our chatapp can communicate with Nexmo client backend -->
