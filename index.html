@@ -103,10 +103,10 @@
                     //get list of all users other than me and loop through them 
                     //and send each an sms message
                    
-                    profiles.items.forEach(profile =>{
+                    profiles.forEach(profile =>{
                         const data = {
                             phone: profile.phone,
-                            text: messageTextArea.value
+                            text: messageTextarea.value
                         }
                         console.log(profile);
                        /* await fetch('/sms', {
