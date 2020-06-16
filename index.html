@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One hack site </title>
+</head>
+<body>
+    <form id="login">
+        <input type="text" id="username" name="username" value="" class="textbox">
+        <button type="submit">login</button>
+
+    </form>
+    <br/> <br/>
+    <section id="chat">
+
+        <div id="Messagefeed"></div>
+        <div>
+        <textarea id="messagetextarea"></textarea>
+        <button id="send">send</button>
+        </div>
+    </section>
+
+    <!-- pull in nexmo client SDK so that our chatapp can communicate with Nexmo client backend -->
+
+    <script src="./node_modules/nexmo-client/dist/nexmoClient.js"></script>
+    <script>
+        /* set credentials for Alice and bob and set conversation ID */
+        const profiles = [
+            {
+                name: "Alice",
+                JWT: "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTIyMjQ5MjQsImp0aSI6IjlkODI5NzIwLWFmMDUtMTFlYS1iN2UxLTZiNzdlNDAxNmFjNyIsImFjbCI6eyJwYXRocyI6eyIvKi91c2Vycy8qKiI6e30sIi8qL2NvbnZlcnNhdGlvbnMvKioiOnt9LCIvKi9zZXNzaW9ucy8qKiI6e30sIi8qL2RldmljZXMvKioiOnt9LCIvKi9pbWFnZS8qKiI6e30sIi8qL21lZGlhLyoqIjp7fSwiLyovYXBwbGljYXRpb25zLyoqIjp7fSwiLyovcHVzaC8qKiI6e30sIi8qL2tub2NraW5nLyoqIjp7fX19LCJzdWIiOiJBbGljZSIsImFwcGxpY2F0aW9uX2lkIjoiZWNjOGRhNjAtMmIyZS00NzNiLWJiODEtYzc4OWQ2ZTZkOGJhIiwiZXhwIjoxNTkyMzExMzIzfQ.UaR4goH9kDAkTmRgQV-aCWvadaBJLzAsUY3mKSrVp9w3hVBTSeJelpW06GAKZWtlwFjKpJTip6s8zps0GIS_FbRfOQuOXWmzpX0HAd4BxV0tvpVIZg_MHgWK8m7zBc8VJPChSoy9eg3kdYiToLbhHNhsMUDKvu_Nkh1C8HFr32J6nP0IUq20iVlz0XU6Px79lOyNIfWIVaupweRTuWcO6Gx5NUqKUCXD1-FqMc5nPrRQ1dsMSBifaVBFPnF0HCkEWuwdMC2CXEsnCjTjAOIpYwOm4MHSAh3ZQPGKFh1hQA7rnRZ82-Qhv3EIV06hm6daNO4zGr87D8P6-KHpp9W2Ow",
+                blood: "A+",
+                city: "London"
+            },
+            {
+                name: "Bob",
+                JWT: "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTIyMjUwNjYsImp0aSI6ImYyNDc1NWMwLWFmMDUtMTFlYS1hYmI4LTgzZjA5Zjc0NjQyMCIsImFjbCI6eyJwYXRocyI6eyIvKi91c2Vycy8qKiI6e30sIi8qL2NvbnZlcnNhdGlvbnMvKioiOnt9LCIvKi9zZXNzaW9ucy8qKiI6e30sIi8qL2RldmljZXMvKioiOnt9LCIvKi9pbWFnZS8qKiI6e30sIi8qL21lZGlhLyoqIjp7fSwiLyovYXBwbGljYXRpb25zLyoqIjp7fSwiLyovcHVzaC8qKiI6e30sIi8qL2tub2NraW5nLyoqIjp7fX19LCJzdWIiOiJCb2IiLCJhcHBsaWNhdGlvbl9pZCI6ImVjYzhkYTYwLTJiMmUtNDczYi1iYjgxLWM3ODlkNmU2ZDhiYSIsImV4cCI6MTU5MjMxMTQ2NX0.h-6zA3LHfdeCXQmZ9OJARIv4ZQAU8RIJ15QCVdS_2sKQqzqOBp0MGY93x5ytjb2mN4kiiTDPeJo96Jm9z9ATk7cS5Y99THjXaK1y3Suu_glm3p1WxdiPcoN_apcnqmCPssu4djxJi5OCgfSIkuP7e36WNwcU0VAQ6abGN-RZE5IdsRWZvpsIAsiEDnUhUhtzb3r82yl4SudRNmB8xSz-K2dxS4PJLaDG2B1sk7YP4gN0z7y8d4MVQnUcelwIiXo9H75e9i-Vtit2bBrHMmQvUmOPuLOoeCfD8G3uip-672Amt1yeyMgtP-1M2RGA239OkOGHWFxBUscIAW2wT2YklQ",
+                blood: "B",
+                city: "London"
+            }
+
+        ]
+
+        const CONVERSATION_ID= "CON-e8fc99be-0301-4ab4-a11e-72bcb02bd068";
+        //Reference to elements
+
+        const loginForm = document.getElementById("login");
+        const username = document.getElementById("username");
+        const messageTextarea = document.getElementById("messagetextarea");
+        const messageFeed = document.getElementById("Messagefeed");
+        const sendButton = document.getElementById("send");
+        // Authenticate the user
+        function authenticate(username){
+            const user = profiles.find(function (p) {
+                return p.name==username;
+            })
+            if (user) {
+                return user.JWT
+            }
+            else {
+                alert("user does not exist");
+            }
+        }
+        // Adding event listner for button
+
+        loginForm.addEventListener("submit",(event)=>{
+            event.preventDefault() // so that page does not reload
+            const userToken = authenticate(username.value);
+            if (userToken){
+                //initialise the chat
+                initializeChat(userToken);
+            }
+        });
+            async function initializeChat(userToken)
+            {
+                const client = new NexmoClient({debug: true}); // to see debug messages in console
+                
+                const app =await client.login(userToken);
+                const conversation = await app.getConversation(CONVERSATION_ID);
+                //load messages that happned before page loaded
+                const initialMessages = await conversation.getEvents({event_type:"text", page_size:100, order:'asc'});
+
+                initialMessages.items.forEach(message =>{
+                    //format messages and add to message feed
+                    formatAndAddMessage(conversation.members.get(message.from), message, conversation.me);
+                });
+                //any time there is a new text event, add it as  a message
+                conversation.on("text", (sender,event)=>{
+                    // format messages and add to message feed
+                    formatAndAddMessage(sender, event, conversation.me);
+
+                });
+                //listen for clicks on send button and listen for existing text value
+                sendButton.addEventListener("click", async()=>{
+                    console.log("test")
+
+                await conversation.sendText(messageTextarea.value);
+                messageTextarea.value = "";
+                });
+            }
+                function formatAndAddMessage(sender, message, me){
+                    let text = "";
+                    //format message
+                    if (message.from !== me.id){
+                            text = '<span style = "color:red">'+sender.user.name+' : <b>'+message.body.text+'</b></span>';
+                                
+                        }
+                        else {
+                            text = 'me : <b>'+message.body.text+'</b>';
+                        }
+                         // Add message
+                        messageFeed.innerHTML += text + "<br />";
+                         }
+
+
+    </script>
+    
+</body>
+</html>
