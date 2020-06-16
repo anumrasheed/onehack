@@ -8,6 +8,10 @@ const app = require('express')()
 const bodyParser = require('body-parser')
 
 const Nexmo = require('nexmo')
+const path = require('path')
+
+const cors = require('cors');
+app.use(cors())
 
 const nexmo = new Nexmo({
   apiKey: NEXMO_API_KEY,
@@ -37,7 +41,7 @@ app
              console.log(err);
          } else {
              if(responseData.messages[0]['status'] === "0") {
-                 console.log("Message sent successfully.");
+                 console.log("Message sent now successfully.");
              } else {
                  console.log(`Message failed with error: ${responseData.messages[0]['error-text']}`);
              }
@@ -66,7 +70,10 @@ app
     })
     response.send('OK');
   }
-
+  /*app.get('/', function (req, res) {
+    res.send('hello world')
+  })*/
+  app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname + '/index.html'));
+});
   app.listen(process.env.PORT || 3000)
-
-

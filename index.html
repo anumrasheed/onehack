@@ -33,7 +33,7 @@
                 blood: "A+",
                 city: "London",
                 country: "UK",
-                phone: "1234567890"
+                phone: "447460301777"
 
             },
             {
@@ -42,7 +42,7 @@
                 blood: "B",
                 city: "London",
                 country: "UK",
-                phone: "1224567890"
+                phone: "447547113295"
             }
 
         ]
@@ -103,20 +103,22 @@
                     //get list of all users other than me and loop through them 
                     //and send each an sms message
                    
-                    profiles.forEach(profile =>{
+                    profiles.forEach(async (profile) => {
                         const data = {
                             phone: profile.phone,
                             text: messageTextarea.value
                         }
                         console.log(profile);
-                       /* await fetch('/sms', {
+
+                    await fetch('http://localhost:3000/sms', {
                             method: 'POST',
+                            mode: 'cors',
+                            credentials: 'same-origin',
                             headers: {
                             'Content-Type': 'application/json'
                             },
                             body: JSON.stringify(data )
-                        });*/
-
+                        });
                     });
 
                 await conversation.sendText(messageTextarea.value);
