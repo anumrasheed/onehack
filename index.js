@@ -1,59 +1,28 @@
-const config = require('./config.json')
-const Nexmo = require('nexmo');
-const Airtable = require('airtable');
-const base = new Airtable({ apiKey: config.AIRTABLE_KEY }).base('tbl8VpCGkuS1UatAY');
-const app = require('express')();
-const bodyParser = require('body-parser')
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true }));
-
+require('dotenv').config({path: __dirname + '/.env'})
+​
+const NEXMO_API_KEY = process.env.NEXMO_API_KEY
+const NEXMO_API_SECRET = process.env.NEXMO_API_SECRET
+const TO_NUMBER = process.env.NEXMO_TO_NUMBER
+const NEXMO_FROM_NUMBER = process.env.NEXMO_FROM_NUMBER
+​
+const Nexmo = require('nexmo')
+​
 const nexmo = new Nexmo({
-    apiKey: config.NEXMO_KEY,
-    apiSecret: config.NEXMO_SECRET,
-    applicationId: config.NEXMO_APPLICATION_ID,
-    privateKey: './private.key'
+  apiKey: NEXMO_API_KEY,
+  apiSecret: NEXMO_API_SECRET
 })
-
-app.post('/inbound', (req, res) => {
-
-    console.log(JSON.stringify(req.body));
-
-    base('Messages').select({
-        filterByFormula: `Number=${msisdn}`
-    }).eachPage(records => {
-        if (records.length == 0) {
-            createUser(text, msisdn)
+const from = NEXMO_FROM_NUMBER
+const to = TO_NUMBER
+const text = 'A text message sent using the Nexmo SMS API'
+​
+nexmo.message.sendSms(447451288842, 447547113295, text, (err, responseData) => {
+    if (err) {
+        console.log(err);
+    } else {
+        if(responseData.messages[0]['status'] === "0") {
+            console.log("Message sent successfully.");
         } else {
-            createMessage(text, records[0].fields.Number[0])
+            console.log(`Message failed with error: ${responseData.messages[0]['error-text']}`);
         }
-    });
-
-    function createUser(message, msisdn) {
-        base('Numbers').create({
-            Number: msisdn
-        }, (err, record) => {
-            if (err) { console.error(err); return; }
-            createMessage(message, record.getId())
-        })
-    }
-
-    function createMessage(message, numberId) {
-        base('Messages').create({
-            Message: message,
-            Number: [numberId]
-        }, err => {
-            if (err) { console.error(err); return; }
-            nexmo.channel.send(
-                { "type": "sms", "number": msisdn },
-                { "type": "sms", "number": 12024489672 },
-                { "content": { "type": "text", "text": "Thank you for getting in touch. We will ring you back as soon as possible." } },
-                nexmoErr => {
-                    if(nexmoErr) { console.error(err); return; } 
-                }
-            ), 
-            res.status(200).end();
-        })
     }
 })
-
-app.listen(3000);
