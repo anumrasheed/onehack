@@ -39,7 +39,6 @@ app
   //outbound sms
 
   function handleOutboundSms(request, response) {
-    request.body.text = request.body.text + text;
      nexmo.message.sendSms(447451288842, request.body.phone, request.body.text, (err, responseData) => {
          if (err) {
              console.log(err);

@@ -165,8 +165,7 @@ input[type=submit]:hover {
 
                 initialMessages.items.forEach(message =>{
                     //format messages and add to message feed
-                    //uncomment the below if you want to see message history
-                   // formatAndAddMessage(conversation.members.get(message.from), message, conversation.me);
+                    formatAndAddMessage(conversation.members.get(message.from), message, conversation.me);
                 });
                 //any time there is a new text event, add it as  a message
                 conversation.on("text", (sender,event)=>{
@@ -205,8 +204,9 @@ input[type=submit]:hover {
             }
                 function formatAndAddMessage(sender, message, me){
                     let text = "";
+                    let linkText = "";
                     //format message
-                    console.log(message.body.text);
+                    linkText = linkText + "I need blood plasma for a patient. Can you please help? If you want to respond to this chat, please login to www.plasmadonors.com";
                     if (message.from !== me.id){
                             text = '<span style = "color:red">'+sender.user.name+' : <b>'+message.body.text+'</b></span>';
                                 
