@@ -161,20 +161,22 @@ input[type=submit]:hover {
                 const app =await client.login(userToken);
                 const conversation = await app.getConversation(CONVERSATION_ID);
                 //load messages that happned before page loaded
-                const initialMessages = await conversation.getEvents({event_type:"text", page_size:100, order:'asc'});
+                const initialMessages = await conversation.getEvents({event_type:"text", page_size:10, order:"desc"});
 
                 initialMessages.items.forEach(message =>{
                     //format messages and add to message feed
-                    formatAndAddMessage(conversation.members.get(message.from), message, conversation.me);
+                    formatAndAddMessage(conversation.members.get(message.from), message, conversation.me, "old");
                 });
                 //any time there is a new text event, add it as  a message
                 conversation.on("text", (sender,event)=>{
                     // format messages and add to message feed
-                    formatAndAddMessage(sender, event, conversation.me);
+                    formatAndAddMessage(sender, event, conversation.me, "new");
 
                 });
                 //listen for clicks on send button and listen for existing text value
+
                 sendButton.addEventListener("click", async()=>{
+                  console.log("sendbutton")
 
                     //get list of all users other than initiator 
                     //and send each an sms message
@@ -183,7 +185,7 @@ input[type=submit]:hover {
                         if(profile.name != username.value){
                             const data = {
                                 phone: profile.phone,
-                                text: messageTextarea.value
+                                text: messageTextarea.value + " Can you please help? If you want to respond to this chat, please login to www.plasmadonors.com"
                             }
 
                         await fetch('http://localhost:3000/sms', {
@@ -202,11 +204,12 @@ input[type=submit]:hover {
                 messageTextarea.value = "";
                 });
             }
-                function formatAndAddMessage(sender, message, me){
+                function formatAndAddMessage(sender, message, me, messageType){
+                  console.log("test1")
                     let text = "";
                     let linkText = "";
                     //format message
-                    linkText = linkText + "I need blood plasma for a patient. Can you please help? If you want to respond to this chat, please login to www.plasmadonors.com";
+                   // message.body.text += "";
                     if (message.from !== me.id){
                             text = '<span style = "color:red">'+sender.user.name+' : <b>'+message.body.text+'</b></span>';
                                 
@@ -215,8 +218,17 @@ input[type=submit]:hover {
                           text = 'me : <b>'+message.body.text+'</b>';
                         }
                          // Add message
-                        messageFeed.innerHTML += text + "<br />";
+                         if (messageType === "old") {
+                           
+                          messageFeed.innerHTML = text + "<br />"+ messageFeed.innerHTML ;
+                          
+
                          }
+                         else {
+                           messageFeed.innerHTML += text + "<br />";
+                         }
+                        
+                } 
 
 
     </script>
