@@ -21,7 +21,7 @@ body {
 /* Style inputs */
 input[type=text], select, textarea {
   width: 100%;
-  padding: 12px;
+  padding: 6px;
   border: 1px solid #ccc;
   margin-top: 6px;
   margin-bottom: 16px;
@@ -61,13 +61,12 @@ input[type=submit]:hover {
   display: table;
   clear: both;
 }
-
 </style>
 </head>
 <body>
 <div class="container">
     <img src="https://d3qotnwylsw2ri.cloudfront.net/img/img-logo.d9e2a6a4.svg"
-    alt="Vonage Business"
+    alt="Vonage Business" style="margin-top: 15px;"
       title="Vonage Business"/>
   <div style="text-align:center">
     <h2>Donor Search</h2>
@@ -80,44 +79,38 @@ input[type=submit]:hover {
       top: 10px;
       right: 60px;">
     </div>
-      <form >
+      <form name="donorSearchForm" >
           <div class="row">
-          <label for="country">Country&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-          <select id="country" name="country" style="height:30px;width:20%">
-              <option value="uk">United Kingdom</option>
-              <option value="usa">USA</option>
-              <option value="australia">Australia</option>
-              <option value="canada">Canada</option>
-          </select>
-        
+                <label for="country">Country&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <select id="country" name="country" style="width:20%">
+                    <option value="uk">United Kingdom</option>
+                    <option value="usa">USA</option>
+                    <option value="australia">Australia</option>
+                    <option value="canada">Canada</option>
+                </select>
+  
       </div>    
-          </br>
-
       <div class="row">
-          <label for="county">County&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-          <select id="county" name="county" style="height:30px;width:20%">
-              <option value="Avon">Avon</option>
-              <option value="Berkshire">Berkshire</option>
-              <option value="Buckinghamshire">Buckinghamshire</option>
-              <option value="Cornwall">Cornwall</option>
-          </select>
-          </br>
+            <label for="city">&nbsp;&nbsp;&nbsp;City&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <select id="city" name="city" style="width:20%">
+                <option value="cambridge">Cambridge</option>
+                <option value="gloucester">Gloucester</option>
+                <option value="liverpool">Liverpool</option>
+                <option value="manchester">Manchester</option>
+            </select>
       </div>    
-          </br>
       <div class="row">
-          <label for="bloodgroup">Blood Group&nbsp;&nbsp;&nbsp;</label>
-          <select id="bloodgroup" name="Blood Group" style="height:30px;width:20%">
-              <option value="A">A</option>
-              <option value="AB">AB</option>
-              <option value="B">B</option>
-              <option value="O">O</option>
-            <option value="O+">O+</option>
-
-          </select>
-          </br>
-          
-      </div>    
+            <label for="bgroup">Blood Group</label>
+            <select id="bgroup" name="bgroup" style="width:20%">
+                <option value="london">O+</option>
+                <option value="uk">A</option>
+                <option value="australia">B</option>
+                <option value="canada">AB+</option>
+            </select>
+      </div>
+      <div class="row">   
         <input type="submit" value="Search">
+      </div>
     </form >
 
 ​   <div style="text-align:center">
@@ -134,7 +127,6 @@ input[type=submit]:hover {
         <label for="pcity">City&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
         <label for="country">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Country&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
         <label for="bgroup">&nbsp;&nbsp;&nbsp;Blood Group&nbsp;</label>
-        <label for="bgroup">&nbsp;&nbsp;&nbsp;Submit Link&nbsp;</label>
         
       </div>
 
@@ -147,7 +139,7 @@ input[type=submit]:hover {
         <input type="text" id="city" name="city" style="width: 100px;">        
         <input type="text" id="country" name="country" style="width: 100px;">              
         <input type="text" id="bgroup" name="bgroup" style="width: 100px;">        
-          <input type="checkbox" id="smsg" name="smsg" style="width: 100px;">
+         <a href="#" style="color:aqua">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Submit&nbsp;&nbsp;</a>
 
       </div>
 
@@ -179,7 +171,7 @@ input[type=submit]:hover {
                 city: "Avon",
                 country: "UK",
                 pphone: "447547113295"
-            }
+            },
 
             {
                 firstname: "Dave",
@@ -189,7 +181,7 @@ input[type=submit]:hover {
                 city: "Avon",
                 country: "UK",
                 pphone: "447547113295"
-            }
+            },
 
             {
                 firstname: "Ian",
@@ -199,7 +191,7 @@ input[type=submit]:hover {
                 city: "Berkshire",
                 country: "UK",
                 pphone: "447547113295"
-            }
+            },
 
             {
                 firstname: "David",
@@ -222,11 +214,11 @@ input[type=submit]:hover {
 
         // Adding event listner for button
 
-        loginForm.addEventListener("submit",(event)=>{
+        donorSearchForm.addEventListener("submit",(event)=>{
             event.preventDefault() // so that page does not reload
 
             }
-        });
+        );
 
 
 
