@@ -237,7 +237,8 @@ input[type=submit]:hover {
              searchresulte.innerHTML=""
              //appending to inner HTML of Div searchresults
              for (let profile of results){
-              searchresulte.innerHTML+="<p>" +profile.firstname+"</p>";
+              searchresulte.innerHTML+="<p style='color:white'>" +profile.firstname
+              + " &nbsp;&nbsp;<a style='color:white' href= '/onehack/index.html'> Start Chat <a>"+"</p>";
 
              }
              
