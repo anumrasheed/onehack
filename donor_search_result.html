@@ -11,7 +11,7 @@
 <style>
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background-image: url("public/images/bg.png");
+  background: linear-gradient(to bottom, #CCCCFF 0%, #66FFFF 100%);
 }
 ​
 * {
@@ -237,8 +237,8 @@ input[type=submit]:hover {
              searchresulte.innerHTML=""
              //appending to inner HTML of Div searchresults
              for (let profile of results){
-              searchresulte.innerHTML+="<p style='color:white'>" +profile.firstname
-              + " &nbsp;&nbsp;<a style='color:white' href= 'index.html'> Start Chat <a>"+"</p>";
+              searchresulte.innerHTML+="<p style='color:black'>" +profile.firstname
+              + " &nbsp;&nbsp;<a style='color:black' href= 'index.html'> Start Chat <a>"+"</p>";
 
              }
              
