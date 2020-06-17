@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.js"></script>
+
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-image: url("public/images/bg.png");
+}
+​
+* {
+  box-sizing: border-box;
+}
+​
+/* Style inputs */
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+​
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  cursor: pointer;
+}
+​
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+​
+/* Style the container/contact section */
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 10px;
+}
+​
+/* Create two columns that float next to eachother */
+.column {
+  float: left;
+  width: 50%;
+  margin-top: 6px;
+  padding: 20px;
+}
+​
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+</style>
+</head>
+<body>
+<div class="container">
+    <img src="https://d3qotnwylsw2ri.cloudfront.net/img/img-logo.d9e2a6a4.svg"
+    alt="Vonage Business"
+      title="Vonage Business"/>
+  <div style="text-align:center">
+    <h2>Donor Search</h2>
+  </div>
+  <br/>
+  <div class="row">
+    <div class="column">
+      <img src="https://login.auth.vonage.com/img/img-clouds-top-big.a193b3ee.svg" style="width: 10%;
+      position: absolute;
+      top: 10px;
+      right: 60px;">
+    </div>
+    
+          <div class="row">
+          <label for="country">Country&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+          <select id="country" name="country" style="width:20%">
+              <option value="uk">United Kingdom</option>
+              <option value="usa">USA</option>
+              <option value="australia">Australia</option>
+              <option value="canada">Canada</option>
+          </select>
+        
+      </div>    
+
+      <div class="row">
+          <label for="county">County&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+          <select id="county" name="county" style="width:20%">
+              <option value="Avon">Avon</option>
+              <option value="Berkshire">Berkshire</option>
+              <option value="Buckinghamshire">Buckinghamshire</option>
+              <option value="Cornwall">Cornwall</option>
+          </select>
+      </div>    
+
+      <div class="row">
+          <label for="bloodgroup">Blood Group&nbsp;&nbsp;&nbsp;</label>
+          <select id="bloodgroup" name="Blood Group" style="width:20%">
+              <option value="A">A</option>
+              <option value="AB">AB</option>
+              <option value="B">B</option>
+              <option value="O">O</option>
+            <option value="O+">O+</option>
+
+          </select>
+      </div>    
+
+​
+
+
+   <div style="text-align:center">
+    <h2>Search Results</h2>
+  </div>
+   
+    <div class="column">
+      <form >
+        <div class="row">
+        <label for="fname">First Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+        <label for="lname">&nbsp;&nbsp;Last Name &nbsp;&nbsp;&nbsp;   </label>
+        <label for="pcity">&nbsp;&nbsp;Phone Number&nbsp;&nbsp;&nbsp;</label>
+        <label for="pcity">&nbsp;&nbsp;&nbsp;&nbsp;Email&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
+        <label for="pcity">City&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+        <label for="country">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Country&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+        <label for="bgroup">&nbsp;&nbsp;&nbsp;Blood Group&nbsp;</label>
+        <label for="bgroup">&nbsp;&nbsp;&nbsp;Send SMS&nbsp;</label>
+        
+      </div>
+
+      <div class="row">
+
+        <input type="text" id="fname" name="firstname" style="width: 100px;">
+        <input type="text" id="lname" name="lastname" style="width: 100px;">
+        <input type="text" id="pphone" name="phonenumber" style="width: 100px;">        
+        <input type="text" id="pemail" name="emailaddress" style="width: 100px;"> 
+        <input type="text" id="city" name="city" style="width: 100px;">        
+        <input type="text" id="country" name="country" style="width: 100px;">              
+        <input type="text" id="bgroup" name="bgroup" style="width: 100px;">        
+          <input type="checkbox" id="smsg" name="smsg" style="width: 100px;">
+
+      </div>
+
+      </br>
+        <input type="submit" value="Send Request">
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+​
+</body>
+</html>
