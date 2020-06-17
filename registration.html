@@ -87,7 +87,7 @@ input[type=submit]:hover {
         <div class="row">
         <label for="fname">First Name&nbsp;&nbsp;    </label>
         <input type="text" id="fname" name="firstname" placeholder="Your first name..">
-        <label for="lname">&nbsp;&nbsp;Last Name &nbsp;&nbsp;   </label>
+        <label for="lname">&nbsp;&nbsp;Last Name </label>
         <input type="text" id="lname" name="lastname" placeholder="Your last name..">
         </div>
         <br/><br/>
@@ -97,44 +97,49 @@ input[type=submit]:hover {
             <label for="pcity">&nbsp;&nbsp;Email&nbsp; &nbsp; </label>
             <input type="text" id="pemail" name="emailaddress" placeholder="Your email.."> 
         </div>
-        <br/><br/>
+        <br/>
         <div class="row">
-        <label for="pcity">City&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-        <select id="pcity" name="pcity" style="width:20%">
-            <option value="usa">United Kingdom</option>
-            <option value="uk">USA</option>
+        <label for="country">Country&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+        <select id="country" name="country" style="width:20%">
+            <option value="uk">United Kingdom</option>
+            <option value="usa">USA</option>
             <option value="australia">Australia</option>
             <option value="canada">Canada</option>
         </select>
        
       </div>
       <div class="row">
-          <label for="country">Country&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-          <select id="country" name="country" style="width:20%">
-              <option value="usa">United Kingdom</option>
-              <option value="uk">USA</option>
-              <option value="australia">Australia</option>
-              <option value="canada">Canada</option>
+          <label for="city">City&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+          <select id="city" name="city" style="width:20%">
+              <option value="cambridge">Cambridge</option>
+              <option value="gloucester">Gloucester</option>
+              <option value="liverpool">Liverpool</option>
+              <option value="manchester">Manchester</option>
           </select>
         
       </div>    
       <div class="row">
         <label for="bgroup">Blood Group</label>
           <select id="bgroup" name="bgroup" style="width:20%">
-              <option value="london">London</option>
-              <option value="uk">USA</option>
-              <option value="australia">Australia</option>
-              <option value="canada">Canada</option>
+              <option value="london">O+</option>
+              <option value="uk">A</option>
+              <option value="australia">B</option>
+              <option value="canada">AB+</option>
           </select>
   
       </div>   
    
       <div class="row">
-          <input type="checkbox" id="agree" name="agree" value="agree">
-        <label for="agree"> I agree to donate/receive the plasma for cure of Corona</label><br>
-      </br>
-        <input type="submit" value="Send SMS">
+         <b> Type</b>
+        <label for="male" class="radio-inline">
+          <input type="radio" id="donor" name="type" value="donor">Donor
+        </label>
+        <label for="female" class="radio-inline">
+          <input type="radio" id="recepient" name="type" value="recepient">Recepient
+        </label> 
       </div>
+    </br>
+      <div class="row"><input type="submit" value="Submit"></div>
       </form>
     </div>
   </div>
