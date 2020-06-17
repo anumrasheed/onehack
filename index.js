@@ -9,7 +9,8 @@ const bodyParser = require('body-parser')
 
 const Nexmo = require('nexmo')
 const path = require('path')
-
+const express = require('express');
+const app = require('express')();
 const cors = require('cors');
 app.use(cors())
 
@@ -24,7 +25,6 @@ const text = 'I need blood plasma for a patient. Can you please help? If you wan
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
-const app = require('express')()
 app.use(express.static(__dirname+'/public'));
 
 app

@@ -67,7 +67,7 @@ input[type=submit]:hover {
 <body>
 <div class="container">
 <img src="https://d3qotnwylsw2ri.cloudfront.net/img/img-logo.d9e2a6a4.svg"
-    alt="Vonage Business"
+    alt="Vonage Business"  style="margin-top: 15px;"
       title="Vonage Business"/>
 ​<h2>Corona Survivor Reach</h2>
 
@@ -81,13 +81,16 @@ input[type=submit]:hover {
     <div class="column">
 
     <form id="login" >
+        User Name
         <input type="text" id="username" name="username" value="" class="textbox">
         <button type="submit">Login</button>
     </form>
 ​    <section id="chat">
+        Message History
         <div id="Messagefeed" contenteditable="true" style="height:250px;overflow-y:scroll;border: 1px solid white;"></div>
         <div>
         <br/>
+        New Message
         <textarea id="messagetextarea" style="height:50px"></textarea>
         <button id="send">Send</button>
         </div>
