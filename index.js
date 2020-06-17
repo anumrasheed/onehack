@@ -4,7 +4,7 @@ const NEXMO_API_KEY = process.env.NEXMO_API_KEY
 const NEXMO_API_SECRET = process.env.NEXMO_API_SECRET
 const TO_NUMBER = process.env.NEXMO_TO_NUMBER
 const NEXMO_FROM_NUMBER = process.env.NEXMO_FROM_NUMBER
-const app = require('express')()
+
 const bodyParser = require('body-parser')
 
 const Nexmo = require('nexmo')
@@ -23,6 +23,9 @@ const text = 'I need blood plasma for a patient. Can you please help? If you wan
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
+
+const app = require('express')()
+app.use(express.static(__dirname+'/public'));
 
 app
   .route('/onehack')
@@ -55,7 +58,6 @@ app
    /* const params = Object.assign(request.query, request.body)
     console.log(params)
     response.status(204).send()*/
-//447460301777  447547113295
     nexmo.message.sendSms(447451288842, 447460301777, text, (err, responseData) => {
         if (err) {
             console.log(err);

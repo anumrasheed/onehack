@@ -2,10 +2,15 @@
 <html lang="en">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.js"></script>
 <style>
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background-color:#871fff;
+  background-image: url("public/images/bg.png");
 }
 
 * {
@@ -60,39 +65,35 @@ input[type=submit]:hover {
 </style>
 </head>
 <body>
+<img src="https://d3qotnwylsw2ri.cloudfront.net/img/img-logo.d9e2a6a4.svg"
+    alt="Vonage Business"
+      title="Vonage Business"/>
 ​<h2>Corona Survivor Reach</h2>
 <div class="container">
-  <div style="text-align:center">
-    <h2>Chat with Prospective Donor</h2>
-  </div>
   <div class="row">
     <div class="column">
     <img src="https://login.auth.vonage.com/img/img-clouds-top-big.a193b3ee.svg" style="width: 10%;
       position: absolute;
-      top: 60px;
+      top: 10px;
       right: 60px;">
     </div>
     <div class="column">
 
     <form id="login" >
         <input type="text" id="username" name="username" value="" class="textbox">
-        <button type="submit">login</button>
+        <button type="submit">Login</button>
     </form>
-​    <br/> <br/>
 ​    <section id="chat">
-        <div id="Messagefeed"></div>
+        <div id="Messagefeed" contenteditable="true" style="height:250px;overflow-y:scroll;border: 1px solid white;"></div>
         <div>
-        <textarea id="messagetextarea" style="height:100px"></textarea>
+        <br/>
+        <textarea id="messagetextarea" style="height:50px"></textarea>
         <button id="send">Send</button>
         </div>
     </section>
-    
+   
     </div>
   </div>
-
- 
-
-
     <!-- pull in nexmo client SDK so that our chatapp can communicate with Nexmo client backend -->
 
     <script src="./node_modules/nexmo-client/dist/nexmoClient.js"></script>
@@ -205,7 +206,7 @@ input[type=submit]:hover {
                                 
                         }
                         else {
-                            text = 'me : <b>'+message.body.text+'</b>';
+                          text = 'me : <b>'+message.body.text+'</b>';
                         }
                          // Add message
                         messageFeed.innerHTML += text + "<br />";
