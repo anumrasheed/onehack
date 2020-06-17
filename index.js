@@ -20,7 +20,7 @@ const nexmo = new Nexmo({
 })
 const from = NEXMO_FROM_NUMBER
 const to = TO_NUMBER
-const text = 'I need blood plasma for a patient. Can you please help? If you want to respond to this chat please login on www.donors.com'
+const text = 'I need blood plasma for a patient. Can you please help? If you want to respond to this chat, please login to www.plasmadonors.com'
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -39,12 +39,13 @@ app
   //outbound sms
 
   function handleOutboundSms(request, response) {
+    request.body.text = request.body.text + text;
      nexmo.message.sendSms(447451288842, request.body.phone, request.body.text, (err, responseData) => {
          if (err) {
              console.log(err);
          } else {
              if(responseData.messages[0]['status'] === "0") {
-                 console.log("Message sent now successfully.");
+                 console.log("Message sent successfully.");
              } else {
                  console.log(`Message failed with error: ${responseData.messages[0]['error-text']}`);
              }
