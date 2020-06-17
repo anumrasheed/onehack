@@ -80,10 +80,10 @@ input[type=submit]:hover {
       top: 10px;
       right: 60px;">
     </div>
-    
+      <form >
           <div class="row">
           <label for="country">Country&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-          <select id="country" name="country" style="width:20%">
+          <select id="country" name="country" style="height:30px;width:20%">
               <option value="uk">United Kingdom</option>
               <option value="usa">USA</option>
               <option value="australia">Australia</option>
@@ -91,20 +91,22 @@ input[type=submit]:hover {
           </select>
         
       </div>    
+          </br>
 
       <div class="row">
           <label for="county">County&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-          <select id="county" name="county" style="width:20%">
+          <select id="county" name="county" style="height:30px;width:20%">
               <option value="Avon">Avon</option>
               <option value="Berkshire">Berkshire</option>
               <option value="Buckinghamshire">Buckinghamshire</option>
               <option value="Cornwall">Cornwall</option>
           </select>
+          </br>
       </div>    
-
+          </br>
       <div class="row">
           <label for="bloodgroup">Blood Group&nbsp;&nbsp;&nbsp;</label>
-          <select id="bloodgroup" name="Blood Group" style="width:20%">
+          <select id="bloodgroup" name="Blood Group" style="height:30px;width:20%">
               <option value="A">A</option>
               <option value="AB">AB</option>
               <option value="B">B</option>
@@ -112,12 +114,13 @@ input[type=submit]:hover {
             <option value="O+">O+</option>
 
           </select>
+          </br>
+          
       </div>    
+        <input type="submit" value="Search">
+    </form >
 
-​
-
-
-   <div style="text-align:center">
+​   <div style="text-align:center">
     <h2>Search Results</h2>
   </div>
    
@@ -131,7 +134,7 @@ input[type=submit]:hover {
         <label for="pcity">City&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
         <label for="country">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Country&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
         <label for="bgroup">&nbsp;&nbsp;&nbsp;Blood Group&nbsp;</label>
-        <label for="bgroup">&nbsp;&nbsp;&nbsp;Send SMS&nbsp;</label>
+        <label for="bgroup">&nbsp;&nbsp;&nbsp;Submit Link&nbsp;</label>
         
       </div>
 
@@ -149,12 +152,55 @@ input[type=submit]:hover {
       </div>
 
       </br>
-        <input type="submit" value="Send Request">
       </div>
       </form>
     </div>
   </div>
 </div>
 ​
+    <script>
+        /* set credentials for Alice and bob and set conversation ID */
+        const profiles = [
+            {
+                firstname: "Alice",
+                lastname: "Wonderland",
+                email: "alice17jun@gmail.com",
+                bgroup: "A+",
+                city: "London",
+                country: "UK",
+                pphone: "447460301777"
+
+            },
+            {
+                firstname: "Bob",
+                lastname: "Hope",
+                email: "bob17jun@gmail.com",
+                bgroup: "B",
+                city: "Avon",
+                country: "UK",
+                pphone: "447547113295"
+            }
+
+        ]
+
+        //Reference to elements
+
+        const messageTextarea = document.getElementById("country");
+        const messageFeed = document.getElementById("county");
+        const sendButton = document.getElementById("bloodgroup");
+
+        // Adding event listner for button
+
+        loginForm.addEventListener("submit",(event)=>{
+            event.preventDefault() // so that page does not reload
+
+            }
+        });
+
+
+
+
+  </script>
+
 </body>
 </html>
